@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#b91c1c">
+<title>Left Demo — Post index</title>
+
+<!-- Marx, the classless CSS reset by Matthew Blode (MIT). -->
+<link rel="stylesheet" href="assets/marx.min.css">
+<!-- Left: the red-and-gold editorial skin. -->
+<link rel="stylesheet" href="assets/left.css">
+</head>
+<body itemscope itemtype="https://schema.org/Blog">
+
+<!-- ============================================================
+     LEFT — POST INDEX
+     Plain-HTML counterpart of the HTMLy theme's main.html.php.
+
+     Structure, top to bottom:
+       header     the banner, brand, nav and search (see note at the bottom)
+       .left-hero page title + lead, only on the index
+       .post-list one .left-post article per post
+       .left-pagination
+       .site-widgets    optional sidebar blocks
+       footer
+
+     Everything here is Left's own markup. The only things to change are the
+     demo strings, which are marked CUSTOMISE.
+     ============================================================ -->
+
+<div class="visually-hidden" aria-hidden="true">
+    <meta content="Left Demo" itemprop="name">
+    <meta content="A plain HTML template for the Left UI." itemprop="description">
+</div>
+
+<header class="left-site-header">
+    <div class="left-banner" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+    <div class="left-nav left-width">
+        <!-- CUSTOMISE: href to your home, and the monogram. Left's theme derives
+             these initials from the first and last word of the site title. -->
+        <a class="left-brand" rel="home" href="index.html" aria-label="Left Demo">
+            <span class="left-brand-initials">LD</span>
+        </a>
+        <button class="left-menu-button" type="button" data-left-menu-button aria-expanded="false" aria-controls="left-navigation">Menu</button>
+        <div class="site-navigation-wrap" id="left-navigation" data-left-navigation>
+            <nav class="site-nav" aria-label="Primary navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="page.html">About</a></li>
+                    <li><a href="#">Archive</a></li>
+                </ul>
+            </nav>
+            <div class="site-search" role="search">
+                <form role="search" method="get" action="#">
+                    <input type="search" name="q" placeholder="Search" aria-label="Search">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main id="content" class="left-main left-width">
+
+    <!-- Hero: the index headline. On a category or tag page, Left swaps this
+         for .left-section-header with a .left-eyebrow above the heading. -->
+    <section class="left-hero">
+        <h1>Notes from the left margin</h1>
+        <p class="left-lead">A plain-HTML rendering of the Left interface, so the design can be
+            lifted into something that is not HTMLy.</p>
+    </section>
+
+    <section class="post-list" aria-label="Posts">
+
+        <!-- ===================== POST 1 — with a featured image ===================== -->
+        <article class="left-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+            <header class="post-header">
+                <p class="left-meta">
+                    <time itemprop="datePublished" datetime="2026-03-03">March 3, 2026</time>
+                    <span aria-hidden="true">&middot;</span><span>6 min read</span>
+                    <span aria-hidden="true">&middot;</span><span itemprop="articleSection">Essays</span>
+                </p>
+                <h2 itemprop="name"><a href="post.html">The quiet cost of a shared dependency</a></h2>
+            </header>
+
+            <figure class="featured-media">
+                <a href="post.html"><img src="assets/placeholder.svg" alt="Placeholder featured image" loading="lazy"></a>
+            </figure>
+
+            <div class="post-teaser" itemprop="articleBody">
+                <p>Every dependency you do not control is a decision somebody else gets to make
+                    later, on your behalf, without asking. The bill arrives quietly and it is
+                    usually denominated in afternoons.</p>
+                <a class="read-more" href="post.html">Continue reading &rarr;</a>
+            </div>
+
+            <div class="left-tags">
+                <a href="#">infrastructure</a>
+                <a href="#">privacy</a>
+            </div>
+        </article>
+
+        <!-- ===================== POST 2 — a link post ===================== -->
+        <!-- A post with an external link gets the &rarr; after its title, on the
+             title itself rather than beside it. See .left-post h2 a. -->
+        <article class="left-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+            <header class="post-header">
+                <p class="left-meta">
+                    <time itemprop="datePublished" datetime="2026-02-21">February 21, 2026</time>
+                    <span aria-hidden="true">&middot;</span><span>9 min read</span>
+                    <span aria-hidden="true">&middot;</span><span itemprop="articleSection">Engineering</span>
+                </p>
+                <h2 itemprop="name"><a href="post.html">What a cache-buster is actually for &rarr;</a></h2>
+            </header>
+
+            <div class="post-teaser" itemprop="articleBody">
+                <p>A version string on a stylesheet URL is a promise that the URL changes when the
+                    file does. Most of the time nobody checks, and the promise quietly stops being
+                    true — which is worse than never having made it.</p>
+                <a class="read-more" href="post.html">Continue reading &rarr;</a>
+            </div>
+
+            <div class="left-tags">
+                <a href="#">frontend</a>
+                <a href="#">caching</a>
+                <a href="#">process</a>
+            </div>
+        </article>
+
+        <!-- ===================== POST 3 — no image ===================== -->
+        <article class="left-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+            <header class="post-header">
+                <p class="left-meta">
+                    <time itemprop="datePublished" datetime="2026-02-08">February 8, 2026</time>
+                    <span aria-hidden="true">&middot;</span><span>4 min read</span>
+                    <span aria-hidden="true">&middot;</span><span itemprop="articleSection">Notes</span>
+                </p>
+                <h2 itemprop="name"><a href="post.html">Reading the manual before the migration</a></h2>
+            </header>
+
+            <div class="post-teaser" itemprop="articleBody">
+                <p>Two pages of documentation read in advance would have saved a night of
+                    debugging. That is the whole post. The rest is an example of the block</p>
+                <blockquote class="featured-quote">Nothing is as expensive as a mistake that
+                    looked obvious only afterwards.</blockquote>
+                <a class="read-more" href="post.html">Continue reading &rarr;</a>
+            </div>
+
+            <div class="left-tags">
+                <a href="#">notes</a>
+            </div>
+        </article>
+
+    </section>
+
+    <!-- Pagination. Left keeps the arrows as plain text when there is no page in
+         that direction, which is why the first span has no <a> in it here. -->
+    <nav class="left-pagination" aria-label="Pagination">
+        <span>&larr; Newer</span>
+        <strong>1 / 4</strong>
+        <span><a rel="next" href="#">Older &rarr;</a></span>
+    </nav>
+
+</main>
+
+<!-- Optional widget strip. In the HTMLy theme each block is behind a setting;
+     a static page either keeps or deletes the ones it wants. -->
+<aside class="site-widgets left-width" aria-label="Blog widgets">
+    <section class="widget">
+        <h2>Recent posts</h2>
+        <ul>
+            <li><a href="post.html">The quiet cost of a shared dependency</a></li>
+            <li><a href="post.html">What a cache-buster is actually for</a></li>
+            <li><a href="post.html">Reading the manual before the migration</a></li>
+        </ul>
+    </section>
+    <section class="widget">
+        <h2>Tags</h2>
+        <div class="tag-cloud">
+            <a href="#">infrastructure</a>
+            <a href="#">privacy</a>
+            <a href="#">frontend</a>
+            <a href="#">caching</a>
+            <a href="#">process</a>
+            <a href="#">notes</a>
+        </div>
+    </section>
+</aside>
+
+<footer class="left-footer">
+    <div class="left-width left-footer-inner">
+        <div class="site-copyright">&#127279; Left Demo</div>
+    </div>
+</footer>
+
+<script src="assets/left.js"></script>
+</body>
+</html>

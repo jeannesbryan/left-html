@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" role="img" aria-label="Placeholder featured image">
+  <!--
+    Placeholder for the featured image slot in index.html / post.html.
+    Swap this file, or point the <figure class="featured-media"> at any image.
+    Left sizes it automatically: .featured-media img is max-width:100%, and
+    .featured-media-single img is capped at 78vh so a tall image stays readable.
+  -->
+  <rect width="1200" height="600" fill="#fff9e8"/>
+  <g fill="none" stroke="#facc15" stroke-width="3">
+    <path d="M0 40h1200M0 560h1200"/>
+  </g>
+  <g fill="#b91c1c">
+    <path d="M600 168l14 44h46l-37 27 14 44-37-27-37 27 14-44-37-27h46z"/>
+  </g>
+  <text x="600" y="392" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="86" font-weight="700" fill="#7f1d1d">Featured image</text>
+  <text x="600" y="448" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="34" fill="#5b4a46" letter-spacing="6">1200 &#215; 600</text>
+</svg>

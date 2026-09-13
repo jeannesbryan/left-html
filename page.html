@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#b91c1c">
+<title>About — Left Demo</title>
+
+<link rel="stylesheet" href="assets/marx.min.css">
+<link rel="stylesheet" href="assets/left.css">
+</head>
+<body itemscope itemtype="https://schema.org/Blog">
+
+<!-- ============================================================
+     LEFT — STATIC PAGE
+     Plain-HTML counterpart of the HTMLy theme's static.html.php.
+
+     The difference from post.html is the header, and it is deliberate:
+     a page is not dated and has no author, so it carries a .left-eyebrow
+     instead of a .left-meta line, and its own lead paragraph. It also has no
+     tags, no featured image and no related-posts block — a page is somewhere
+     you arrive at, not something you read in sequence.
+     ============================================================ -->
+
+<div class="visually-hidden" aria-hidden="true">
+    <meta content="Left Demo" itemprop="name">
+    <meta content="A plain HTML template for the Left UI." itemprop="description">
+</div>
+
+<header class="left-site-header">
+    <div class="left-banner" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+    <div class="left-nav left-width">
+        <a class="left-brand" rel="home" href="index.html" aria-label="Left Demo">
+            <span class="left-brand-initials">LD</span>
+        </a>
+        <button class="left-menu-button" type="button" data-left-menu-button aria-expanded="false" aria-controls="left-navigation">Menu</button>
+        <div class="site-navigation-wrap" id="left-navigation" data-left-navigation>
+            <nav class="site-nav" aria-label="Primary navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="page.html">About</a></li>
+                    <li><a href="#">Archive</a></li>
+                </ul>
+            </nav>
+            <div class="site-search" role="search">
+                <form role="search" method="get" action="#">
+                    <input type="search" name="q" placeholder="Search" aria-label="Search">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main id="content" class="left-main left-width">
+
+    <article class="left-article static-page" itemscope itemtype="https://schema.org/WebPage">
+
+        <header class="left-article-header">
+            <p class="left-eyebrow">Page</p>
+            <h1 itemprop="name">About</h1>
+            <p class="left-lead">What this template is, and the two or three things worth
+                knowing before you start cutting it up.</p>
+        </header>
+
+        <div class="post-body article-body" itemprop="mainContentOfPage">
+
+            <p>This is the static-page view of the Left interface, rendered as plain HTML. It
+                exists so the design can be lifted into a project that is not HTMLy — a
+                documentation site, a landing page, a generated static build — without
+                transliterating PHP by hand.</p>
+
+            <h2>What Left provides</h2>
+
+            <p>Two layers, kept deliberately separate:</p>
+
+            <ul>
+                <li><strong>Marx</strong> — a classless CSS reset. It styles the elements you would
+                    otherwise have to remember to style: headings, lists, tables, quotes, form
+                    controls. It is unopinionated about colour.</li>
+                <li><strong>Left</strong> — the red-and-gold editorial skin on top: the gold banner,
+                    the paper background, the card treatment with a red left edge and an offset
+                    shadow, the serif display type, the footer.</li>
+            </ul>
+
+            <p>Because the bottom layer is classless, ordinary markup already looks deliberate.
+                Left's classes are then for the things that are genuinely structural — a post
+                card, a hero, a widget — rather than for every paragraph.</p>
+
+            <h2>The classes you will actually touch</h2>
+
+            <table>
+                <thead>
+                    <tr><th>Class</th><th>What it is</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><code>.left-width</code></td><td>The page container. Sets the measure.</td></tr>
+                    <tr><td><code>.left-hero</code></td><td>Page-level heading block, with the star watermark.</td></tr>
+                    <tr><td><code>.left-post</code></td><td>One post card in a listing.</td></tr>
+                    <tr><td><code>.left-article-header</code></td><td>The header block of a single post or page.</td></tr>
+                    <tr><td><code>.left-panel</code></td><td>Shared card for related posts, navigation, comments.</td></tr>
+                    <tr><td><code>.left-eyebrow</code></td><td>Small uppercase label above a heading.</td></tr>
+                    <tr><td><code>.left-meta</code></td><td>The date · read time · category line.</td></tr>
+                </tbody>
+            </table>
+
+            <h2>Customising it</h2>
+
+            <p>Colour lives in a single <code>:root</code> block at the top of
+                <code>assets/left.css</code>. Change the two reds and the gold and the whole
+                interface follows, because nothing downstream hard-codes a colour.</p>
+
+            <pre><code>:root {
+  --left-red:   #b91c1c;
+  --left-gold:  #facc15;
+  --left-paper: #fff9e8;
+}</code></pre>
+
+            <p>Everything else in that file is layout, and is safe to edit.</p>
+
+            <h2>Two caveats</h2>
+
+            <ul>
+                <li>The three pages repeat the header and footer verbatim. That is intentional —
+                    a template that needs a build step to render is no longer a template — but it
+                    does mean a change to the navigation has to be made in three places.</li>
+                <li>The asset links carry no cache-buster. If you add one, derive it from the file
+                    rather than typing a version number, because a version number on a URL is a
+                    promise that has to be kept by hand.</li>
+            </ul>
+
+        </div>
+    </article>
+
+    <!-- Page navigation is optional; it only appears when the page has siblings. -->
+    <nav class="post-navigation left-panel" aria-label="Page navigation">
+        <div><a rel="next" href="#">&larr; Colophon</a></div>
+        <div><a rel="prev" href="#">Contact &rarr;</a></div>
+    </nav>
+
+</main>
+
+<footer class="left-footer">
+    <div class="left-width left-footer-inner">
+        <div class="site-copyright">&#127279; Left Demo</div>
+    </div>
+</footer>
+
+<script src="assets/left.js"></script>
+</body>
+</html>

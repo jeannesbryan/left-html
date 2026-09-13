@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#b91c1c">
+<title>The quiet cost of a shared dependency — Left Demo</title>
+
+<link rel="stylesheet" href="assets/marx.min.css">
+<link rel="stylesheet" href="assets/left.css">
+</head>
+<body itemscope itemtype="https://schema.org/Blog">
+
+<!-- ============================================================
+     LEFT — SINGLE POST
+     Plain-HTML counterpart of the HTMLy theme's post.html.php.
+
+     Differences from the index worth knowing about:
+       .left-article-header   is the post's own header block: the back link,
+                              the h1, the meta line and the tags all sit inside it
+       .featured-media-single caps the image at 78vh so a tall one stays readable
+       .post-body (alias .article-body) is where the post's own markup goes;
+                              Left styles headings, lists and quotes through Marx
+       .left-panel            is the shared card used by related posts, the
+                              previous/next navigation and the comments block
+     ============================================================ -->
+
+<div class="visually-hidden" aria-hidden="true">
+    <meta content="Left Demo" itemprop="name">
+    <meta content="A plain HTML template for the Left UI." itemprop="description">
+</div>
+
+<header class="left-site-header">
+    <div class="left-banner" aria-hidden="true"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>
+    <div class="left-nav left-width">
+        <a class="left-brand" rel="home" href="index.html" aria-label="Left Demo">
+            <span class="left-brand-initials">LD</span>
+        </a>
+        <button class="left-menu-button" type="button" data-left-menu-button aria-expanded="false" aria-controls="left-navigation">Menu</button>
+        <div class="site-navigation-wrap" id="left-navigation" data-left-navigation>
+            <nav class="site-nav" aria-label="Primary navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="page.html">About</a></li>
+                    <li><a href="#">Archive</a></li>
+                </ul>
+            </nav>
+            <div class="site-search" role="search">
+                <form role="search" method="get" action="#">
+                    <input type="search" name="q" placeholder="Search" aria-label="Search">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main id="content" class="left-main left-width">
+
+    <!-- Breadcrumb. The category step is optional: drop the whole
+         .breadcrumb-step span when the post has no category. -->
+    <nav class="breadcrumb breadcrumb-post" aria-label="Breadcrumb">
+        <a class="breadcrumb-home" href="index.html">Home</a>
+        <span class="breadcrumb-step">
+            <span class="breadcrumb-separator" aria-hidden="true">&raquo;</span>
+            <span class="breadcrumb-category">Essays</span>
+        </span>
+        <span class="breadcrumb-step breadcrumb-current-step">
+            <span class="breadcrumb-separator" aria-hidden="true">&raquo;</span>
+            <span class="breadcrumb-current" aria-current="page">The quiet cost of a shared dependency</span>
+        </span>
+    </nav>
+
+    <article class="left-article" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+
+        <header class="left-article-header">
+            <a class="left-back" href="index.html">&larr; Back to home</a>
+            <h1 itemprop="name">The quiet cost of a shared dependency</h1>
+            <p class="left-meta">
+                <time itemprop="datePublished" datetime="2026-03-03">March 3, 2026</time>
+                <span aria-hidden="true">&middot;</span><span>6 min read</span>
+                <span aria-hidden="true">&middot;</span><span itemprop="articleSection">Essays</span>
+                <span aria-hidden="true">&middot;</span><span itemprop="author"><a href="#">Jeannes Bryan</a></span>
+            </p>
+            <div class="left-tags">
+                <a href="#">infrastructure</a>
+                <a href="#">privacy</a>
+            </div>
+        </header>
+
+        <figure class="featured-media featured-media-single">
+            <img src="assets/placeholder.svg" alt="Placeholder featured image">
+        </figure>
+
+        <div class="post-body article-body" itemprop="articleBody">
+
+            <p>Every dependency you do not control is a decision somebody else gets to make later,
+                on your behalf, without asking. That is not an argument against dependencies — it
+                is an argument for knowing which ones you have taken.</p>
+
+            <p>The bill arrives quietly, and it is usually denominated in afternoons.</p>
+
+            <h2>What it looks like when it comes due</h2>
+
+            <p>A stylesheet URL that names a version it no longer serves. A build that only works
+                on one machine. A dependency that publishes a breaking change on a Tuesday. None
+                of these announce themselves; you find out when something upstream moves and a
+                page you did not touch starts rendering wrong.</p>
+
+            <h3>The three questions worth asking</h3>
+
+            <ul>
+                <li><strong>Can I read the whole thing?</strong> If the source is not available, the
+                    dependency is a black box with a renewal date.</li>
+                <li><strong>What happens if it disappears?</strong> A vendored copy survives an
+                    upstream disappearance. A CDN link does not.</li>
+                <li><strong>Who updates it, and how would I know?</strong> An unowned dependency
+                    is not stable; it is frozen and drifting.</li>
+            </ul>
+
+            <blockquote class="featured-quote">
+                Nothing is as expensive as a mistake that looked obvious only afterwards.
+            </blockquote>
+
+            <h2>Vendoring is not the same as never updating</h2>
+
+            <p>Keeping a local copy buys you the ability to decide <em>when</em> to move, which is
+                the only thing that makes an upgrade safe to attempt. It does not remove the
+                obligation to move eventually.</p>
+
+            <pre><code># the copy is the thing you actually ship
+cp -p vendor/reset.css assets/reset.css
+md5sum assets/reset.css</code></pre>
+
+            <p>Write down what you vendored and from where. The note costs one line and saves the
+                afternoon where somebody has to work out whether the file in the repository or
+                the file upstream is the one that is real.</p>
+
+            <h2>What this has to do with a blog template</h2>
+
+            <p>Very little, except that the same reasoning is why this page links to
+                <code>assets/marx.min.css</code> and <code>assets/left.css</code> instead of
+                reaching for a CDN. Two local files, no third-party requests, and a page that
+                renders identically offline.</p>
+
+        </div>
+    </article>
+
+    <!-- Related posts. In the HTMLy theme this is rendered from a field on the
+         post; in a static page it is just a list. -->
+    <section class="related-posts left-panel">
+        <h2>Related posts</h2>
+        <ul>
+            <li><a href="post.html">What a cache-buster is actually for</a></li>
+            <li><a href="post.html">Reading the manual before the migration</a></li>
+        </ul>
+    </section>
+
+    <!-- Previous / next. Left puts them in opposite columns, so the arrows point
+         outward: &larr; on the left item, &rarr; on the right one. -->
+    <nav class="post-navigation left-panel" aria-label="Post navigation">
+        <div><a rel="next" href="#">&larr; Reading the manual before the migration</a></div>
+        <div><a rel="prev" href="#">What a cache-buster is actually for &rarr;</a></div>
+    </nav>
+
+</main>
+
+<footer class="left-footer">
+    <div class="left-width left-footer-inner">
+        <div class="site-copyright">&#127279; Left Demo</div>
+    </div>
+</footer>
+
+<script src="assets/left.js"></script>
+</body>
+</html>
