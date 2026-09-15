@@ -99,3 +99,11 @@ noticed for a release.
 - **Marx** — [Matthew Blode](https://github.com/mblode/marx), MIT. See
   `THIRD-PARTY-LICENSE.md`.
 - **Left** — [Jeannes Bryan](https://github.com/jeannesbryan).
+
+## License
+
+The Left interface markup is released under the MIT License. See `LICENSE`.
+
+The bundled Marx stylesheet is a separate work by Matthew Blode, also
+distributed under the MIT License; its notice is kept in
+`THIRD-PARTY-LICENSE.md`.
